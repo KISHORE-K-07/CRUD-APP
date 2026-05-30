@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+
+    <a href="{{ url_for('detail_list') }}">
+        <button class="btn btn-secondary">BACK</button>
+    </a>
+
+</div>
+
+    <form method="post">
+        <label>Name:</label><br>
+        <input type="text" name="user_name" required><br><br>
+
+        <label>Age:</label><br>
+        <input type="number" name="age" required><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-end my-3">
+
+    <a href="{{ url_for('detail_list') }}">
+        <button class="btn btn-secondary">BACK</button>
+    </a>
+
+</div>
+
+    <form method="post">
+        <label>Name:</label><br>
+        <input type="text" name="user_name" required value="{{ d.name }}"><br><br>
+
+        <label>Age:</label><br>
+        <input type="number" name="age" required value="{{ d.age }}"><br><br>
+
+        <button type="submit">Update</button>
+    </form>
+
+{% endblock %}
