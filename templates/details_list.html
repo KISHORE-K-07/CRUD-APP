@@ -1,37 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="d-flex justify-content-end my-3">
 
-<a href="{{ url_for('details') }}">
-    <button class="btn btn-primary">ADD DETAILS</button>
-</a>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Details Manager</h2>
+        <a href="{{ url_for('details') }}">
+            <button class="btn btn-primary px-4">+ Add Details</button>
+        </a>
+    </div>
 
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover table-bordered mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="ps-3">#</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th class="text-center">Update</th>
+                        <th class="text-center">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for detail in u %}
+                    <tr>
+                        <td class="ps-3 text-muted">{{ loop.index }}</td>
+                        <td>{{ detail.name }}</td>
+                        <td>{{ detail.age }}</td>
+                        <td class="text-center">
+                            <a href="{{ url_for('details_edit', id=detail.id) }}">
+                                <button class="btn btn-warning btn-sm px-3">✏️ Update</button>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a href="{{ url_for('details_delete', id=detail.id) }}">
+                                <button class="btn btn-danger btn-sm px-3">🗑️ Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
-<table class="table table-bordered">
-    <tr>
-        
-        <th>Name</th>
-        <th>Age</th>
-        <th>update</th>
-        <th>delete</th>
-    </tr>
-    {% for detail in u%}
-    <tr>
-       
-        <td>{{ detail.name }}</td>
-        <td>{{ detail.age }}</td>
-        <td>
-            <a href="{{ url_for('details_edit',id=detail.id) }}">
-                <button class='btn btn-warning btn-sm'>update</button>
-            </a>
-        </td>
-        <td>
-            <a href="{{ url_for('details_delete',id=detail.id) }}">
-                <button class='btn btn-danger btn-sm'>delete</button>
-            </a>
-        </td>
-    </tr>
-
-    {% endfor %}
 {% endblock %}
