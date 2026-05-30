@@ -2,7 +2,7 @@ from flask import Flask,render_template,request,redirect,url_for
 from models import db,User
 from flask_migrate import Migrate
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = ('mysql+pymysql://root:Kisop%40123@localhost/details_db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///details.db'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
