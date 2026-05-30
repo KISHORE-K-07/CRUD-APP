@@ -7,6 +7,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///details.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 migrate = Migrate(app, db)
+with app.app_context():
+    db.create_all()
 
 @app.route('/',methods={'GET','POST'})
 def details():
